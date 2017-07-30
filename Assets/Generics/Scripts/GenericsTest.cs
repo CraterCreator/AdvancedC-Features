@@ -15,6 +15,8 @@ namespace Generics
             gameObjects = new CustomList<GameObject>();
             gameObjects[0] = new GameObject();
             gameObjects.Add(new GameObject());
+            gameObjects.Remove(new GameObject());
+            gameObjects.Clear(new GameObject());
         }
 
         // Update is called once per frame

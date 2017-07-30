@@ -54,5 +54,36 @@ namespace Generics
             // Increment amount
             amount++;
         }
+
+        public void Remove(T item)
+        {
+            T[] cache = new T[amount - 1];
+            if(list != null)
+            {
+                for (int i = 0; i < list.Length; i++)
+                {
+                    cache[i] = list[i];
+                }
+            }
+
+            cache[amount] = item;
+            list = cache;
+            amount--;
+        }
+
+        public void Clear(T item)
+        {
+            T[] cache = new T[amount - list.Length];
+            if (list != null)
+            {
+                for (int i = 0; i < list.Length; i++)
+                {
+                    cache[i] = list[i];
+                }
+            }
+
+            cache[amount] = item;
+            list = cache;
+        }
     }
 }
