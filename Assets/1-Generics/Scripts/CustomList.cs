@@ -71,19 +71,9 @@ namespace Generics
             amount--;
         }
 
-        public void Clear(T item)
+        public void Clear()
         {
-            T[] cache = new T[amount - list.Length];
-            if (list != null)
-            {
-                for (int i = 0; i < list.Length; i++)
-                {
-                    cache[i] = list[i];
-                }
-            }
-
-            cache[amount] = item;
-            list = cache;
+            T[] cache = new T[amount];
         }
     }
 }
