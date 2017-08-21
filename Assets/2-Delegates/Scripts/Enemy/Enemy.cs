@@ -12,11 +12,10 @@ namespace Delegates
             IDLE = 0,
             SEEK = 1
         }
-
         // Defining a delegate
         delegate void BehaviourFunc();
 
-        public Transform target;
+        public static Transform target;
         public Behaviour behaviourIndex = Behaviour.SEEK;
 
         // Creating a list for the delegates
@@ -30,6 +29,8 @@ namespace Delegates
             // Setup our behaviours
             behaviourFuncs.Add(Idle);
             behaviourFuncs.Add(Seek);
+
+            target = GameObject.FindGameObjectWithTag("Player").transform;
         }
 
         void Idle()
@@ -52,7 +53,7 @@ namespace Delegates
 
         public void SetTarget(Transform target)
         {
-            this.target = target;
+            //this.target = target;
         }
 
         public bool IsCloseToTarget(float distance)

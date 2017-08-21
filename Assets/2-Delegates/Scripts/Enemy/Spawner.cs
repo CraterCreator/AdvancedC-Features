@@ -8,26 +8,50 @@ namespace Delegates
     {
         public Transform target;
         public GameObject orcPrefab, trollPrefab;
-        public float minAmount = 0, maxAmount = 20;
+        public int minAmount = 0, maxAmount = 20;
         public float spawnRate = 1f;
+
+        delegate void Prefabs();
+
+        private List<Prefabs> Spawning = new List<Prefabs>();
+
+
+        void Awake()
+        {
+            Spawning.Add(SpawnOrc);
+            Spawning.Add(SpawnTroll);
+        }
+
+        void Start()
+        {
+            if(Enemy.target != null)
+            {
+            InvokeRepeating("SpawnLoop", 1, 1);
+
+            }
+        }
 
         // Use this for initialization
         void SpawnTroll()
         {
             // Spawn Troll Prefab
-            // SetTarget on troll to target
+            Instantiate(trollPrefab, transform.position,transform.rotation);
+            
         }
 
         // Update is called once per frame
         void SpawnOrc()
         {
-
-           // Spawn Orc Prefab
-           // SetTarget on orc to target
+            // Spawn Orc Prefab
+            Instantiate(orcPrefab, transform.position, transform.rotation);
         }
 
-        // Goal is to call these two functions
-        // randomly using delegates
+        void SpawnLoop()
+        {
+            // Goal is to call these two functions
+            // randomly using delegates
+            Spawning[Random.Range(0, 2)]();
+        }
     }
 }
 
