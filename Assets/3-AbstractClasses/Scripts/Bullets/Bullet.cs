@@ -9,10 +9,11 @@ namespace AbstractClasses
     {
         public float speed = 10f;
         public float aliveDistance = 5f;
+        public Vector3 endPos;
 
         private Rigidbody2D rigid;
         private Vector3 shotPos; // Position it fired from
-        
+
         void Awake()
         {
             rigid = GetComponent<Rigidbody2D>();
@@ -23,11 +24,12 @@ namespace AbstractClasses
             shotPos = transform.position;
         }
 
-        void Update()
+        public virtual void Update()
         {
             float distance = Vector3.Distance(shotPos, transform.position);
-            if(distance > aliveDistance)
+            if (distance > aliveDistance)
             {
+                endPos.x = distance;
                 Destroy(gameObject);
             }
         }
@@ -37,7 +39,7 @@ namespace AbstractClasses
             // Set currentSpeed to the member speed
             float currentSpeed = this.speed;
             // If the optional argument has been set
-            if(speed != null)
+            if (speed != null)
             {
                 // Replace currentSpeed with the argument
                 currentSpeed = speed.Value;
