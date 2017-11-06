@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.Networking;
+
 namespace AbstractClasses
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class Bullet : MonoBehaviour
+    public class Bullet : NetworkBehaviour
     {
         public float speed = 10f;
         public float aliveDistance = 5f;

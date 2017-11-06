@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 namespace Networking
 {
-    public class ShootScript : MonoBehaviour
+    public class ShootScript : NetworkBehaviour
     {
 
         public float fireRate = 1f;
